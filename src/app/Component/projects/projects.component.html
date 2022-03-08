@@ -1,0 +1,31 @@
+
+
+<div class="panel-group" >
+  <div class="panel panel-default">
+    <div class="panel-heading" [attr.href]="'#'+ConcernedProject.IdProject" data-toggle="collapse">
+      <h4 class="panel-title">
+        {{ConcernedProject.Title}}
+
+        <i href="#" *ngIf="!ConcernedProject.isFinished" routerLink="/addtask"(click)="sendProject(ConcernedProject)"  style="font-size:23px;" class="fa fa-plus-circle pull-right" ></i>
+        <div class="btn-group pull-right">
+          <i  class="fa fa-ellipsis-v  pull-left dropdown-toggle" style="font-size:23px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+          </i>
+          <ul class="dropdown-menu ">
+
+            <li class="dropdown-item list-group-item" *ngIf="!isEmpty() && !ConcernedProject.isFinished" href="#"(click)="this.getStorage().makeProjectComplete(ConcernedProject.IdProject)">make it complete</li>
+            <li class="dropdown-item list-group-item" href="#">Modify<li>
+            <li class="dropdown-item list-group-item" href="#" (click)="this.getStorage().removeProject(ConcernedProject)" >Delete<li>
+
+          </ul>
+        </div>
+      </h4>
+    </div>
+    <div id="{{ConcernedProject.IdProject}}" class="panel-collapse collapse">
+      <div class="panel-body" *ngFor="let task of this.getStorage().getConcernedTasks(ConcernedProject.IdProject)">
+        <app-tasks [(ConcernedTask)]="task"></app-tasks>
+      </div>
+
+    </div>
+  </div>
+</div>

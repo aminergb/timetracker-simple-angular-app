@@ -1,0 +1,95 @@
+<div class="panel-group">
+<div class="container">
+  <div class="jumborton">
+  <h1  class="text-center">time tracker</h1>
+  </div>
+  <div class="panel-group">
+    <div class="panel panel-default">
+
+
+      <input type="submit" (click)="AddQuickieOnProject()"  value ="quick task"class="btn btn-default btn-lg btn-block">
+      <div class="panel panel-default"  *ngFor="let task of this.getStor().LocalQuickies">
+       <app-tasks [(ConcernedTask)]="task"></app-tasks>
+
+
+
+        </div>
+      </div>
+
+
+
+  </div>
+  <!-- ici on ajoute les tasks clickables-->
+  <div class="container">
+
+
+  </div>
+
+</div>
+
+<div class="container">
+
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading col"  data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+      <h4 class="panel-title" >
+     Projects  <i class="fa fa-plus-square pull-right" href="#" routerLink="new" style="font-size:23px;" ></i>
+   </h4>
+   </div>
+
+    <div id="collapse1" class="panel-collapse collapse ">
+      <div class="panel-body" *ngFor="let project of this.getStor().LocalProjects">
+        <app-projects [(ConcernedProject)]="project"></app-projects>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading col"  data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+       <h4 class="panel-title" >
+     All Tasks
+    </h4>
+    </div>
+
+
+    <div id="collapse2"  class="panel-collapse collapse ">
+      <div class="panel-body"  *ngFor="let task of this.getStor().LocalTasks">
+        <app-tasks [(ConcernedTask)]="task"></app-tasks></div>
+    </div>
+
+
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading "  data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+     <h4 class="panel-title" >
+    Completed tasks
+  </h4>
+  </div>
+
+
+  <div id="collapse3" class="panel-collapse collapse ">
+    <div class="panel-body" *ngFor="let task of this.getStor().getCompleteTasks()">
+      <app-tasks [(ConcernedTask)]="task"></app-tasks></div>
+  </div>
+
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading "  data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+     <h4 class="panel-title" >
+    Current tasks
+  </h4>
+  </div>
+
+
+  <div id="collapse4" class="panel-collapse collapse ">
+    <div class="panel-body" *ngFor="let task of this.getStor().getCurrentTasks()">
+      <app-tasks [(ConcernedTask)]="task"></app-tasks></div>
+  </div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+<!-- Example single danger button -->

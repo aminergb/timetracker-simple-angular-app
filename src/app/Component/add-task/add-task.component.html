@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="jumborton">
+  <h1>Add Task</h1>
+  </div>
+  <div class="container">
+  <form #f="ngForm" (ngSubmit)=" AddTaskOnProject(f)" >
+    <div class="form-group">
+    <div class="input-group">
+      <input type="text" class="form-control" id="titletask" name="titletask" placeholder="Title" ngModel required>
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit"[disabled]="f.invalid">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+</div>
+

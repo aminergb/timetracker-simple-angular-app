@@ -1,0 +1,31 @@
+
+
+
+<div class="panel panel-default" >
+  <div  class="panel-body">{{ConcernedTask.Title}}               time spent : {{getCurrentTime()}}
+
+
+
+
+   <i *ngIf="!ConcernedTask.isFinished; else showcheck; " (click)="this.StatusChangeOnClick(this.ConcernedTask)" style="font-size:23px;"   [ngClass]="ConcernedTask.isPaused ? 'fa fa-pause pull-right' : 'fa fa-play pull-right' " ></i>
+   <ng-template class="pull-right" #showcheck >
+    <i   class="fa fa-check pull-right" style="font-size:23px;"  ></i>
+  </ng-template>
+<div class="btn-group pull-right">
+  <i  class="fa fa-ellipsis-v  pull-left dropdown-toggle" style="font-size:23px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+  </i>
+  <ul class="dropdown-menu ">
+
+    <li class="dropdown-item list-group-item" href="#" (click)="this.ConcernedTask.TimeCurrent=0">repeat</li>
+    <li class="dropdown-item list-group-item" href="#" (click)="(this.ConcernedTask.IdProject==-1) ?this.getStorage().makeQuickieComplete(ConcernedTask) : this.getStorage().makeTaskComplete(ConcernedTask)">Complete</li>
+    <li class="dropdown-item list-group-item" href="#">Modify<li>
+    <li class="dropdown-item list-group-item" href="#" (click)="(this.ConcernedTask.IdProject==-1) ? this.getStorage().removeQuickie(ConcernedTask):this.getStorage().removeTask(ConcernedTask)" >Delete<li>
+
+  </ul>
+</div>
+</div>
+</div>
+
+
+
